@@ -46,4 +46,12 @@ class PostsController < ApplicationController
     post.save
     redirect_to("/posts/#{post.id}")
   end
+
+  def destroy
+    id = params.fetch(:id)
+    post = Post.where({:id => id}).first
+    post.destroy
+
+    redirect_to("/")
+  end
 end
