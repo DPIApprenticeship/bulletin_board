@@ -11,4 +11,8 @@
 class Post < ApplicationRecord
   validates(:title, { :presence => true } )
   validates(:content, { :presence => true })
+
+  def comments
+    return Comment.where({:post_id => self.id})
+  end
 end
