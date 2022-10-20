@@ -1,6 +1,6 @@
 <h1><%= @post ? "Edit Post" : "New Post" %></h1>
 
-<form action="<%= @post ? "/posts/update/#{@post.id}" : "/posts/new" %>">
+<form action="<%= @post ? "/posts/update/#{@post.id}" : "/posts/create" %>">
 
 
   <label for="title">Title</label>
