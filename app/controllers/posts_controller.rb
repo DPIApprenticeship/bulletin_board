@@ -6,7 +6,7 @@ class PostsController < ApplicationController
   end
 
   def new
-    render({:template => "/post_templates/new_post_form.html.erb"})
+    render({:template => "/post_templates/post_form.html.erb"})
   end
 
   def create
@@ -25,5 +25,25 @@ class PostsController < ApplicationController
     id = params.fetch(:id)
     @post = Post.where({:id => id}).first
     render({:template => "post_templates/show.html.erb"})
+  end
+
+  def edit
+    id = params.fetch(:id)
+    @post = Post.where({:id => id}).first
+
+    render({:template => "post_templates/post_form.html.erb"})
+  end
+
+  def update
+    id = params.fetch(:id)
+    title = params.fetch(:title)
+    content = params.fetch(:content)
+
+    post = Post.where({:id => id}).first
+    post.title = title
+    post.content = content
+
+    post.save
+    redirect_to("/posts/#{post.id}")
   end
 end
