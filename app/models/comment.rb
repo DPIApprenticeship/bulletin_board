@@ -9,4 +9,6 @@
 #  post_id    :integer
 #
 class Comment < ApplicationRecord
+  validates(:content, { :presence => true})
+  validates(:post_id, { :presence => true})
 end
