@@ -1,4 +1,27 @@
 <h1><%= @post.title %></h1>
 <p><%= @post.content %></p>
+
+<table>
+  <tr>
+    <th>ID</th>
+    <th>Comment</th>
+    <th>Created At</th>
+  </tr>
+  <% @post.comments.each do |comment| %>
+    <tr>
+      <td><%= comment.id %></td>
+      <td><%= comment.content %></td>
+      <td><%= comment.created_at %></td>
+    </tr>
+  <% end %>
+</table>
+
+<form action="/posts/<%= @post.id %>/add_comment">
+  <input id="content" name="content">
+  <button>Add Comment</button>
+</form>
+
+
+
 <a href="/posts/edit/<%= @post.id %>">Edit Post</a>
 <a href="/posts/delete/<%= @post.id %>">Delete Post</a>
