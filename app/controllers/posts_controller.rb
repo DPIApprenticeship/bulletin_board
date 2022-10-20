@@ -7,4 +7,16 @@ class PostsController < ApplicationController
   def new
     render({:template => "/post_templates/new_post_form.html.erb"})
   end
+
+  def create
+    title = params.fetch(:title)
+    content = params.fetch(:content)
+
+    post = Post.new
+    post.title = title
+    post.content = content
+
+    post.save
+    redirect_to("/posts/#{post.id}")
+  end
 end
