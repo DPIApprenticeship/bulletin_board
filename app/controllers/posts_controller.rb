@@ -19,6 +19,7 @@ class PostsController < ApplicationController
 
     post.save
     redirect_to("/posts/#{post.id}")
+
   end
 
   def show
