@@ -1,6 +1,7 @@
 class PostsController < ApplicationController
   
   def index
+    @posts = Post.all
     render({:template => "/post_templates/index.html.erb"})
   end
 
